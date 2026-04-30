@@ -2,24 +2,16 @@ import 'package:music_app/models/note.dart';
 
 class Chord {
   final List<Note> notes;
-  final Duration? duration;
+  final Duration duration;
 
-  Chord(this.notes, {this.duration});
+  Chord(this.notes, this.duration);
 
-  factory Chord.major(int root, {Duration? duration}) {
-    return Chord([
-      Note(root),
-      Note(root + 4),
-      Note(root + 7),
-    ], duration: duration);
+  factory Chord.major(int root, Duration duration) {
+    return Chord([Note(root), Note(root + 4), Note(root + 7)], duration);
   }
 
-  factory Chord.minor(int root, {Duration? duration}) {
-    return Chord([
-      Note(root),
-      Note(root + 3),
-      Note(root + 7),
-    ], duration: duration);
+  factory Chord.minor(int root, Duration duration) {
+    return Chord([Note(root), Note(root + 3), Note(root + 7)], duration);
   }
 
   Chord invert({int steps = 1}) {
@@ -34,6 +26,6 @@ class Chord {
       newNotes.add(newNote);
     }
 
-    return Chord(newNotes, duration: duration);
+    return Chord(newNotes, duration);
   }
 }

@@ -1,11 +1,5 @@
 import 'package:music_app/models/chord.dart';
 import 'package:music_app/models/music_engine.dart';
-import 'package:riverpod/riverpod.dart';
-
-final chordPlayerProvider = Provider<ChordPlayer>((ref) {
-  final engine = ref.watch(musicEngineProvider);
-  return ChordPlayer(engine, 1);
-});
 
 class ChordPlayer {
   final MusicEngine _engine;
