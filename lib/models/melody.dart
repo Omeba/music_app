@@ -1,7 +1,7 @@
-import 'package:music_app/models/melody_note.dart';
+import 'package:music_app/models/note.dart';
 
 class Melody {
-  final List<MelodyNote> notes;
+  final List<Note> notes;
 
   const Melody(this.notes);
 }
