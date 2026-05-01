@@ -11,9 +11,7 @@ class ChordPlayer {
     for (var i in chord.notes) {
       await _engine.playNote(i.tone, channel: channel);
     }
-    if (chord.duration != null) {
-      Future.delayed(chord.duration!, () => stopChord(chord));
-    }
+    Future.delayed(chord.duration, () => stopChord(chord));
   }
 
   Future<void> stopChord(Chord chord) async {
