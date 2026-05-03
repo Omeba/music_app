@@ -1,6 +1,12 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:music_app/models/melody.dart';
 import 'package:music_app/models/music_engine.dart';
 import 'package:music_app/models/note.dart';
+
+final melodyPlayerProvider = Provider((ref) {
+  final engine = ref.watch(musicEngineProvider);
+  return MelodyPlayer(engine, 2);
+});
 
 class MelodyPlayer {
   final MusicEngine _engine;

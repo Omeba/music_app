@@ -1,6 +1,12 @@
 import 'package:music_app/models/chord.dart';
 import 'package:music_app/models/chord_player.dart';
 import 'package:music_app/models/chord_progression.dart';
+import 'package:riverpod/riverpod.dart';
+
+final chordProgressionPlayerProvider = Provider((ref) {
+  final engine = ref.watch(chordPlayerProvider);
+  return ChordProgressionPlayer(engine, 3);
+});
 
 class ChordProgressionPlayer {
   final ChordPlayer _chordPlayer;

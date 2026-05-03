@@ -1,19 +1,33 @@
-import 'package:music_app/models/question_settings.dart';
+import 'package:music_app/models/audio_player_facade.dart';
+import 'package:music_app/models/round.dart';
+import 'package:music_app/models/tonality.dart';
 
-class Level {
+enum Difficulty { easy, medium, hard }
+
+abstract class Level {
   final String id;
-  final String groupId;
+  final String? previousId;
+  final String? nextId;
   final int scoreToComplete;
-  final int questions;
-  final QuestionSettings questionSettings;
+  final int rounds;
+  final Difficulty difficulty;
+  Tonality? currentTonality;
   int bestScore = 0;
   bool get isCompleted => bestScore >= scoreToComplete;
 
   Level(
     this.id,
-    this.groupId,
     this.scoreToComplete,
-    this.questions,
-    this.questionSettings,
-  );
+    this.rounds,
+    this.difficulty,
+    this.currentTonality, {
+    this.previousId,
+    this.nextId,
+  });
+
+  Round getRound();
+
+  Tonality getTonalityForRound(int roundIndex);
+
+  Future<void> playRound(Round round, AudioPlayerFacade player);
 }
