@@ -7,10 +7,10 @@ enum Difficulty { easy, medium, hard }
 abstract class Level {
   final String id;
   final String? previousId;
-  final String? nextId;
   final int scoreToComplete;
   final int rounds;
   final Difficulty difficulty;
+  final DateTime? updatedAt;
   Tonality? currentTonality;
   int bestScore = 0;
   bool get isCompleted => bestScore >= scoreToComplete;
@@ -22,7 +22,7 @@ abstract class Level {
     this.difficulty,
     this.currentTonality, {
     this.previousId,
-    this.nextId,
+    this.updatedAt,
   });
 
   Round getRound();

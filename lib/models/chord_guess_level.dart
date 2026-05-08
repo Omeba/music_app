@@ -16,8 +16,29 @@ class ChordGuessLevel extends Level {
     super.rounds,
     super.difficulty,
     super.currentTonality,
-    this.possibleChords,
-  );
+    this.possibleChords, {
+    super.previousId,
+    super.updatedAt,
+  });
+
+  factory ChordGuessLevel.fromJson(Map<String, dynamic> json) {
+    final chordsData = json['chords'] as List<dynamic>? ?? [];
+    final possibleChords = chordsData.map((c) {
+      final root = c['root_note'] as String;
+      final quality = c['quality'] as String? ?? '';
+      return Chord.fromRootAndQuality(root, quality);
+    }).toList();
+
+    return ChordGuessLevel(
+      json['id'] as String,
+      json['score_to_complete'] as int? ?? 5,
+      json['rounds'] as int? ?? 10,
+      _parseDifficulty(json['difficulty']),
+      Tonality(1, TonalityMode.major),
+      possibleChords,
+      previousId: json['prev_level_id'] as String?,
+    );
+  }
 
   Duration? get timeLimit {
     switch (difficulty) {
@@ -28,6 +49,25 @@ class ChordGuessLevel extends Level {
       case Difficulty.hard:
         return Duration(seconds: 5);
     }
+  }
+
+  static Difficulty _parseDifficulty(dynamic value) {
+    if (value is int) {
+      return switch (value) {
+        1 => Difficulty.easy,
+        2 => Difficulty.medium,
+        3 => Difficulty.hard,
+        _ => Difficulty.medium,
+      };
+    }
+    // fallback, если сервер пришлёт строку (на будущее)
+    final str = value.toString().toLowerCase();
+    return switch (str) {
+      'easy' => Difficulty.easy,
+      'medium' => Difficulty.medium,
+      'hard' => Difficulty.hard,
+      _ => Difficulty.medium,
+    };
   }
 
   @override
