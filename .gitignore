@@ -44,3 +44,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /android/build/reports
+
+/assets/soundfont/FluidR3_GM.sf2
