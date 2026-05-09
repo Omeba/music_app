@@ -1,7 +1,11 @@
+import 'package:hive/hive.dart';
 import 'package:music_app/models/note.dart';
 
+@HiveType(typeId: 4)
 class Chord {
+  @HiveField(0)
   final List<Note> notes;
+  @HiveField(1)
   final Duration duration;
 
   Chord(this.notes, this.duration);

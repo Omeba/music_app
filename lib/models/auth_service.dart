@@ -1,4 +1,9 @@
 import 'package:music_app/models/api_client.dart';
+import 'package:riverpod/riverpod.dart';
+
+final authServiceProvider = Provider((ref) {
+  return AuthService(ref.watch(apiClientProvider));
+});
 
 class AuthService {
   final ApiClient _apiClient;
@@ -18,4 +23,10 @@ class AuthService {
     _apiClient.authToken = token;
     return token;
   }
+
+  Future<bool> hasValidToken() async {
+    throw UnimplementedError();
+  }
+
+  Future<void> logout() async {}
 }

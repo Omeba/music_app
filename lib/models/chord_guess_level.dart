@@ -1,12 +1,15 @@
 import 'dart:math';
 
+import 'package:hive/hive.dart';
 import 'package:music_app/models/audio_player_facade.dart';
 import 'package:music_app/models/chord.dart';
 import 'package:music_app/models/level.dart';
 import 'package:music_app/models/round.dart';
 import 'package:music_app/models/tonality.dart';
 
+@HiveType(typeId: 2)
 class ChordGuessLevel extends Level {
+  @HiveField(7)
   final List<Chord> possibleChords;
   final Random _random = Random();
 

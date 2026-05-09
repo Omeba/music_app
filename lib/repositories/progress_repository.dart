@@ -1,6 +1,13 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:music_app/models/progress.dart';
 import 'package:music_app/models/sync_service.dart';
+
+final progressRepositoryProvider = Provider((ref) {
+  final Box<Progress> progressBox = Hive.box('progressBox');
+  final syncService = ref.watch(syncServiceProvider);
+  return ProgressRepository(progressBox, syncService);
+});
 
 class ProgressRepository {
   final Box<Progress> _progressBox;

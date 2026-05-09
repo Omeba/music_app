@@ -1,8 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'level_attempt.g.dart';
-
-@HiveType(typeId: 2)
+@HiveType(typeId: 3)
 class Progress extends HiveObject {
   @HiveField(0)
   final String levelId;

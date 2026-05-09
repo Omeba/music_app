@@ -1,5 +1,10 @@
+import 'package:hive/hive.dart';
+
+@HiveType(typeId: 5)
 class Note {
+  @HiveField(0)
   final int tone;
+  @HiveField(1)
   final Duration duration;
 
   const Note(this.tone, {this.duration = const Duration(milliseconds: 250)});

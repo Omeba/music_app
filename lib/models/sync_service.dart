@@ -1,6 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:music_app/models/api_client.dart';
 import 'package:music_app/models/progress.dart';
+
+final syncServiceProvider = Provider((ref) {
+  final apiClient = ref.watch(apiClientProvider);
+  return SyncService(apiClient);
+});
 
 class SyncService {
   final ApiClient _apiClient;

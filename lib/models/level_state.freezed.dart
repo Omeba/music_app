@@ -25,12 +25,12 @@ $LevelStateCopyWith<LevelState> get copyWith => _$LevelStateCopyWithImpl<LevelSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LevelState&&const DeepCollectionEquality().equals(other.currentRound, currentRound)&&(identical(other.roundIndex, roundIndex) || other.roundIndex == roundIndex)&&(identical(other.correctlyAnswered, correctlyAnswered) || other.correctlyAnswered == correctlyAnswered)&&(identical(other.totalRounds, totalRounds) || other.totalRounds == totalRounds)&&(identical(other.state, state) || other.state == state)&&(identical(other.remainingSeconds, remainingSeconds) || other.remainingSeconds == remainingSeconds)&&const DeepCollectionEquality().equals(other.tonality, tonality));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LevelState&&(identical(other.currentRound, currentRound) || other.currentRound == currentRound)&&(identical(other.roundIndex, roundIndex) || other.roundIndex == roundIndex)&&(identical(other.correctlyAnswered, correctlyAnswered) || other.correctlyAnswered == correctlyAnswered)&&(identical(other.totalRounds, totalRounds) || other.totalRounds == totalRounds)&&(identical(other.state, state) || other.state == state)&&(identical(other.remainingSeconds, remainingSeconds) || other.remainingSeconds == remainingSeconds)&&(identical(other.tonality, tonality) || other.tonality == tonality));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(currentRound),roundIndex,correctlyAnswered,totalRounds,state,remainingSeconds,const DeepCollectionEquality().hash(tonality));
+int get hashCode => Object.hash(runtimeType,currentRound,roundIndex,correctlyAnswered,totalRounds,state,remainingSeconds,tonality);
 
 @override
 String toString() {
@@ -233,12 +233,12 @@ _$LevelStateCopyWith<_LevelState> get copyWith => __$LevelStateCopyWithImpl<_Lev
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LevelState&&const DeepCollectionEquality().equals(other.currentRound, currentRound)&&(identical(other.roundIndex, roundIndex) || other.roundIndex == roundIndex)&&(identical(other.correctlyAnswered, correctlyAnswered) || other.correctlyAnswered == correctlyAnswered)&&(identical(other.totalRounds, totalRounds) || other.totalRounds == totalRounds)&&(identical(other.state, state) || other.state == state)&&(identical(other.remainingSeconds, remainingSeconds) || other.remainingSeconds == remainingSeconds)&&const DeepCollectionEquality().equals(other.tonality, tonality));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LevelState&&(identical(other.currentRound, currentRound) || other.currentRound == currentRound)&&(identical(other.roundIndex, roundIndex) || other.roundIndex == roundIndex)&&(identical(other.correctlyAnswered, correctlyAnswered) || other.correctlyAnswered == correctlyAnswered)&&(identical(other.totalRounds, totalRounds) || other.totalRounds == totalRounds)&&(identical(other.state, state) || other.state == state)&&(identical(other.remainingSeconds, remainingSeconds) || other.remainingSeconds == remainingSeconds)&&(identical(other.tonality, tonality) || other.tonality == tonality));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(currentRound),roundIndex,correctlyAnswered,totalRounds,state,remainingSeconds,const DeepCollectionEquality().hash(tonality));
+int get hashCode => Object.hash(runtimeType,currentRound,roundIndex,correctlyAnswered,totalRounds,state,remainingSeconds,tonality);
 
 @override
 String toString() {
