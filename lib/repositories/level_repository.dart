@@ -5,14 +5,14 @@ import 'package:music_app/models/level.dart';
 import 'package:music_app/models/sync_service.dart';
 
 final levelRepositoryProvider = Provider((ref) {
-  final Box<Level> levelBox = Hive.box('levelBox');
+  final Box<Level> levelBox = Hive.box<Level>('levelBox');
   final Box settingsBox = Hive.box('settingsBox');
   final syncService = ref.watch(syncServiceProvider);
   return LevelRepository(levelBox, settingsBox, syncService);
 });
 
 class LevelRepository {
-  final Box _levelBox;
+  final Box<Level> _levelBox;
   final Box _settingsBox;
   final SyncService _syncService;
 

@@ -19,9 +19,13 @@ void main() async {
   Hive.registerAdapter(NoteAdapter());
   Hive.registerAdapter(ChordAdapter());
   Hive.registerAdapter(DifficultyAdapter());
-  Hive.registerAdapter(ChordGuessLevelAdapter()); // конкретный адаптер
-  Hive.registerAdapter(LevelAdapter()); // полиморфный адаптер для Level
+  Hive.registerAdapter(ChordGuessLevelAdapter());
+  Hive.registerAdapter(LevelAdapter());
   Hive.registerAdapter(ProgressAdapter());
+  Hive.openBox('settingsBox');
+  Hive.openBox('levelBox');
+  Hive.openBox('progressBox');
+  Hive.openBox('authBox');
   runApp(
     MaterialApp(
       // Объявление основных маршрутов приложения

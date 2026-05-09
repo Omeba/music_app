@@ -3,8 +3,6 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:music_app/models/auth_service.dart';
-import 'package:music_app/models/auth_service.dart';
-import 'package:music_app/models/sync_service.dart';
 import 'package:music_app/repositories/level_repository.dart';
 import 'package:music_app/repositories/progress_repository.dart';
 
