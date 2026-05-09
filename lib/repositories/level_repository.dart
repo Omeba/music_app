@@ -55,6 +55,7 @@ class LevelRepository {
       for (final levelData in changedLevels) {
         await _applyLevelUpdate(levelData);
       }
+      print('Total levels after sync: ${_levelBox.length}');
 
       await _setLastSyncTimestamp(serverLastModified);
       return true;
@@ -80,6 +81,9 @@ class LevelRepository {
       final newLevel = _createLevelFromMap(levelData);
       if (newLevel != null) {
         await _levelBox.put(id, newLevel);
+        print('✅ Saved level: $id');
+      } else {
+        print('❌ _createLevelFromMap returned null for id: $id');
       }
     } else if (serverUpdatedAt != null &&
         (localLevel.updatedAt == null ||
@@ -95,13 +99,20 @@ class LevelRepository {
 
   Level? _createLevelFromMap(Map<String, dynamic> map) {
     final type = map['type'] as String?;
+    print('Creating level of type: $type');
     if (type == 'chord_guess') {
-      return ChordGuessLevel.fromJson(map);
+      try {
+        final level = ChordGuessLevel.fromJson(map);
+        return level;
+      } catch (e, stack) {
+        print('💥 Error creating ChordGuessLevel: $e\n$stack');
+        return null;
+      }
     }
     return null;
   }
 
-  List<Level> getAllLevels() => _levelBox.values.toList().cast<Level>();
+  List<Level> getAllLevels() => _levelBox.values.cast<Level>().toList();
   Level? getLevel(String id) => _levelBox.get(id);
   Future<void> saveLevel(Level level) => _levelBox.put(level.id, level);
   Future<void> deleteLevel(String id) => _levelBox.delete(id);

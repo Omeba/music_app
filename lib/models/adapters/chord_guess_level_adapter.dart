@@ -15,15 +15,16 @@ class ChordGuessLevelAdapter extends TypeAdapter<ChordGuessLevel> {
     final rounds = reader.readInt();
     final difficulty = reader.read() as Difficulty;
     final currentTonality = reader.read() as Tonality?;
-    final possibleChords = reader.read() as List<Chord>;
-    final previousId = reader.readString();
 
-    // Читаем дату как long (millisecondsSinceEpoch), -1 означает null
+    // Вместо прямого as List<Chord> делаем приведение элементов
+    final rawChords = reader.read() as List;
+    final possibleChords = rawChords.map((e) => e as Chord).toList();
+
+    final previousId = reader.readString();
     final updatedAtMillis = reader.readInt();
     final updatedAt = updatedAtMillis == -1
         ? null
         : DateTime.fromMillisecondsSinceEpoch(updatedAtMillis);
-
     final bestScore = reader.readInt();
 
     final level = ChordGuessLevel(

@@ -11,7 +11,7 @@ final melodyPlayerProvider = Provider((ref) {
 class MelodyPlayer {
   final MusicEngine _engine;
   int channel;
-  Melody _currentMelody = [] as Melody;
+  Melody _currentMelody = Melody('', []);
   int _currentIndex = 0;
   CancellationToken? _token;
 

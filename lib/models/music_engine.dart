@@ -11,7 +11,9 @@ class MusicEngine {
     if (isInitialized) return;
     _engine = FlutterMidiEngine();
     await _engine.unmute();
-    await _engine.loadSoundfontFromAsset("assetPath");
+    await _engine.loadSoundfontFromAsset("assets/soundfont/FluidR3_GM.sf2");
+    await _engine.changeProgram(program: 0);
+    await _engine.setVolume(volume: 100);
     isInitialized = true;
   }
 

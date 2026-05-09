@@ -11,7 +11,7 @@ final chordProgressionPlayerProvider = Provider((ref) {
 class ChordProgressionPlayer {
   final ChordPlayer _chordPlayer;
   int channel;
-  ChordProgression _currentProgression = [] as ChordProgression;
+  ChordProgression _currentProgression = ChordProgression('', []);
   int _currentIndex = 0;
   CancellationToken? _token;
 

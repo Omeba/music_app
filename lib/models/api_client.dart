@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final apiClientProvider = Provider((ref) {
-  return ApiClient(baseUrl: " ");
+  return ApiClient(
+    baseUrl: "https://rearview-borrowing-follow.ngrok-free.dev/",
+  );
 });
 
 class ApiClient {

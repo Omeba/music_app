@@ -14,7 +14,8 @@ class ChordAdapter extends TypeAdapter<Chord> {
       (_) => reader.read() as Note,
     );
     final duration = Duration(microseconds: reader.readInt());
-    return Chord(notes, duration);
+    final name = reader.readString();
+    return Chord(notes, duration, name: name);
   }
 
   @override
@@ -24,5 +25,6 @@ class ChordAdapter extends TypeAdapter<Chord> {
       writer.write(note);
     }
     writer.writeInt(obj.duration.inMicroseconds);
+    writer.writeString(obj.name ?? "");
   }
 }

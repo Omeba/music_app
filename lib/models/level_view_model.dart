@@ -66,13 +66,13 @@ class LevelViewModel extends Notifier<LevelState> {
         state = state.copyWith(remainingSeconds: state.remainingSeconds - 1);
         if (state.remainingSeconds <= 0) {
           timer.cancel();
-          _evaluateAnswer(null);
+          evaluateAnswer(null);
         }
       });
     }
   }
 
-  void _evaluateAnswer(bool? isCorrect) {
+  void evaluateAnswer(bool? isCorrect) {
     if (isCorrect == true) {
       state = state.copyWith(correctlyAnswered: state.correctlyAnswered + 1);
     }
